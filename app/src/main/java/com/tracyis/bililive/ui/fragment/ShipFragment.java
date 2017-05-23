@@ -12,6 +12,11 @@ public class ShipFragment extends BaseFragment {
 
 
     @Override
+    protected void requestNet() {
+
+    }
+
+    @Override
     protected View initView() {
         return View.inflate(mContext,R.layout.fragment_ship, null);
     }

@@ -18,9 +18,9 @@ public class RankingAdapter extends PagerAdapter {
     private static final String TAG = "RankingAdapter";
     private String[] titles = {"七日榜","助推榜","舰队"};
     private Context mContext;
-    private List<RankingBean.DataBean.ListBean> data = new ArrayList<>();
+    private List<RankingBean.DataBean> data = new ArrayList<>();
 
-    public RankingAdapter(Context context, List<RankingBean.DataBean.ListBean> datas) {
+    public RankingAdapter(Context context, List<RankingBean.DataBean> datas) {
         mContext=context;
         data = datas;
     }

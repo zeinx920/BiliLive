@@ -18,9 +18,9 @@ import java.util.List;
 public class RankingListAdapter extends BaseAdapter {
     private static final String TAG = "RankingListAdapter";
     private final Context mContext;
-    private List<RankingBean.DataBean.ListBean> datas = new ArrayList<>();
+    private List<RankingBean.DataBean> datas = new ArrayList<>();
 
-    public RankingListAdapter(Context context, List<RankingBean.DataBean.ListBean> data) {
+    public RankingListAdapter(Context context, List<RankingBean.DataBean> data) {
         mContext = context;
         datas = data;
     }
@@ -53,9 +53,9 @@ public class RankingListAdapter extends BaseAdapter {
         } else {
             holder = (Holder) convertView.getTag();
         }
-        holder.name.setText(datas.get(position).uname + "");
-        holder.devote.setText(datas.get(position).level + "");
-        holder.rank.setText(datas.get(position).level + "");
+        holder.name.setText(datas.get(position).username + "");
+        holder.devote.setText(datas.get(position).uid + "");
+        holder.rank.setText(datas.get(position).rank + "");
         return convertView;
     }
 

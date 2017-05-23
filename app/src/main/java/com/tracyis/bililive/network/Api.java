@@ -1,5 +1,6 @@
 package com.tracyis.bililive.network;
 
+import com.tracyis.bililive.bean.DanmuBean;
 import com.tracyis.bililive.bean.LiveBean;
 import com.tracyis.bililive.bean.LiveCategoryBean;
 import com.tracyis.bililive.bean.RankingBean;
@@ -25,8 +26,8 @@ public interface Api {
     @GET("/AppIndex/tags?_device=android&appkey=1d8b6e7d45233436&build=505000&mobi_app=android&platform=android&ts=1495438990&sign=27e923afa5c522c9c8c42f6e56f4bf99")
     Call<LiveCategoryBean> getTopCategory();
 
-    @POST("login?username=test&password=test")
-    Call<Object> login();
+    @GET("/AppRoom/msg?_device=android&appkey=1d8b6e7d45233436&build=505000&mobi_app=android&platform=android&room_id=14682&ts=1495524590&sign=3732dbd4e25f10024fc14e11ff00d885")
+    Call<DanmuBean> getDanmuList(@Query("room_id") int room_id);
 
     @GET("/AppRoom/guardRank?_device=android&appkey=1d8b6e7d45233436&build=505000&mobi_app=android&page=1&page_size=15&platform=android&ruid=700152&ts=1495515600&sign=7a98896752c160e5126c415f85df2cdd")
     Call<RankingBean> getRankingList();

@@ -15,6 +15,7 @@ public abstract class BaseFragment extends Fragment {
     private static final String TAG = "BaseFragment";
     private View mView;
     protected Context mContext;
+    protected int mRoom;
 
     @Nullable
     @Override
@@ -27,10 +28,13 @@ public abstract class BaseFragment extends Fragment {
     }
 
     protected void requestNet() {
-
     }
 
     protected abstract View initView();
 
     protected abstract void initData();
+
+    public void setRoom(int room) {
+        mRoom = room;
+    }
 }

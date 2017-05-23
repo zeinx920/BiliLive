@@ -57,6 +57,7 @@ public class LiveListActivity extends AppCompatActivity {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Intent intent = new Intent(LiveListActivity.this, VideoViewActivity.class);
                 intent.putExtra("stream_addr", mBean.data.get(position).playurl);
+                intent.putExtra("room_id", mBean.data.get(position).room_id);
                 startActivity(intent);
             }
         });

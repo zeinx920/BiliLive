@@ -17,6 +17,7 @@ public class VideoViewActivity extends AppCompatActivity {
     private String mVideoPath;
     private ViewPager mVp;
     private TabPageIndicator mTpi;
+    private int mRoomID;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,6 +50,7 @@ public class VideoViewActivity extends AppCompatActivity {
 
     private void initData() {
         mVideoPath = getIntent().getStringExtra("stream_addr");
+        mRoomID = getIntent().getIntExtra("room_id",0);
         IjkMediaPlayer.loadLibrariesOnce(null);
         IjkMediaPlayer.native_profileBegin("libijkplayer.so");
         if (mVideoPath != null) {
@@ -63,7 +65,7 @@ public class VideoViewActivity extends AppCompatActivity {
         mVp = (ViewPager) findViewById(R.id.vp_vva);
         mTpi = (TabPageIndicator) findViewById(R.id.tpi_vva);
 
-        mVp.setAdapter(new VideoViewAdapter(getSupportFragmentManager()));
+        mVp.setAdapter(new VideoViewAdapter(getSupportFragmentManager(),mRoomID));
         mTpi.setViewPager(mVp);
         mVp.setCurrentItem(0);
     }

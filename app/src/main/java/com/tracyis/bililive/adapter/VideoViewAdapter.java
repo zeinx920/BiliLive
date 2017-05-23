@@ -6,16 +6,19 @@ import android.support.v4.app.FragmentStatePagerAdapter;
 import android.view.View;
 
 import com.tracyis.bililive.ui.FragmentFactory;
+import com.tracyis.bililive.ui.fragment.BaseFragment;
 
 /**
  * Created by Trasys on 2017/5/23.
  */
 public class VideoViewAdapter extends FragmentStatePagerAdapter {
     private static final String TAG = "VideoViewAdapter";
+    private final int mRoom;
     private String[] titles = {"互动","排行榜","舰队"};
 
-    public VideoViewAdapter(FragmentManager fm) {
+    public VideoViewAdapter(FragmentManager fm, int roomID) {
         super(fm);
+        mRoom = roomID;
     }
 
     @Override
@@ -30,7 +33,9 @@ public class VideoViewAdapter extends FragmentStatePagerAdapter {
 
     @Override
     public Fragment getItem(int position) {
-        return FragmentFactory.getInstance().getFragment(position);
+        BaseFragment fragment = FragmentFactory.getInstance().getFragment(position);
+        fragment.setRoom(mRoom);
+        return fragment;
     }
 
     @Override

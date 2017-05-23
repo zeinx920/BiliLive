@@ -20,10 +20,10 @@ import retrofit2.Call;
  * Created by Trasys on 2017/5/23.
  */
 public class RankingFragment extends BaseFragment {
-    private static final String TAG = "InteractFragment";
+    private static final String TAG = "RankingFragment";
     private ViewPager mVp;
     private TabPageIndicator mTpi;
-    private List<RankingBean.DataBean.ListBean> mDatas = new ArrayList<>();
+    private List<RankingBean.DataBean> mDatas = new ArrayList<>();
     private RankingAdapter mRankingAdapter;
 
     @Override
@@ -53,23 +53,23 @@ public class RankingFragment extends BaseFragment {
             @Override
             public void onPageSelected(int position) {
                 mVp.setCurrentItem(position);
-                Call<RankingBean> rankingBeanCall = MyRetrofit
-                        .getInstance()
-                        .getApi()
-                        .getRankingList();
-                rankingBeanCall.enqueue(new MyRetroCallback<RankingBean>() {
-                    @Override
-                    protected void onSuccess(RankingBean data) {
-                        mDatas = data.data.list;
-                        mRankingAdapter.notifyDataSetChanged();
-                        Log.d(TAG, "onSuccess: " + mDatas.get(0).uname);
-                    }
-
-                    @Override
-                    protected void onFail(String err) {
-
-                    }
-                });
+//                Call<RankingBean> rankingBeanCall = MyRetrofit
+//                        .getInstance()
+//                        .getApi()
+//                        .getRankingList();
+//                rankingBeanCall.enqueue(new MyRetroCallback<RankingBean>() {
+//                    @Override
+//                    protected void onSuccess(RankingBean data) {
+//                        mDatas = data.data.list;
+//                        mRankingAdapter.notifyDataSetChanged();
+//                        Log.d(TAG, "onSuccess: " + mDatas.get(0).uname);
+//                    }
+//
+//                    @Override
+//                    protected void onFail(String err) {
+//                        Log.d(TAG, "onFail: "+err);
+//                    }
+//                });
             }
 
             @Override
@@ -85,17 +85,18 @@ public class RankingFragment extends BaseFragment {
                 .getInstance()
                 .getApi()
                 .getRankingList();
+        Log.d(TAG, "requestNet: 排行请求");
         rankingBeanCall.enqueue(new MyRetroCallback<RankingBean>() {
             @Override
             protected void onSuccess(RankingBean data) {
-                mDatas = data.data.list;
-                Log.d(TAG, "onSuccess: " + mDatas.get(0).uname);
+                mDatas = data.data;
+                Log.d(TAG, "onSuccess: " + mDatas.get(0).username);
                 mRankingAdapter.notifyDataSetChanged();
             }
 
             @Override
             protected void onFail(String err) {
-
+                Log.d(TAG, "onFail: " +err);
             }
         });
 
