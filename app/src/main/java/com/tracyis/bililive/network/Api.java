@@ -2,6 +2,7 @@ package com.tracyis.bililive.network;
 
 import com.tracyis.bililive.bean.LiveBean;
 import com.tracyis.bililive.bean.LiveCategoryBean;
+import com.tracyis.bililive.bean.RankingBean;
 
 import retrofit2.Call;
 import retrofit2.http.GET;
@@ -27,7 +28,6 @@ public interface Api {
     @POST("login?username=test&password=test")
     Call<Object> login();
 
-    @Headers("userid:20428")
-    @POST("logout")
-    Call<Object> logout();
+    @GET("/AppRoom/guardRank?_device=android&appkey=1d8b6e7d45233436&build=505000&mobi_app=android&page=1&page_size=15&platform=android&ruid=700152&ts=1495515600&sign=7a98896752c160e5126c415f85df2cdd")
+    Call<RankingBean> getRankingList();
 }

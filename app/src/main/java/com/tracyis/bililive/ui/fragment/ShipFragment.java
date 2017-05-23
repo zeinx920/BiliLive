@@ -1,6 +1,5 @@
 package com.tracyis.bililive.ui.fragment;
 
-import android.view.LayoutInflater;
 import android.view.View;
 
 import com.tracyis.bililive.R;
@@ -8,14 +7,15 @@ import com.tracyis.bililive.R;
 /**
  * Created by Trasys on 2017/5/23.
  */
-public class InteractFragment extends BaseFragment {
-    private static final String TAG = "InteractFragmet";
+public class ShipFragment extends BaseFragment {
+    private static final String TAG = "InteractFragment";
 
 
     @Override
     protected View initView() {
-        return LayoutInflater.from(mContext).inflate(R.layout.fragment_interact, null);
+        return View.inflate(mContext,R.layout.fragment_ship, null);
     }
+
     @Override
     protected void initData() {
 

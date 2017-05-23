@@ -1,25 +1,103 @@
 package com.tracyis.bililive.ui.fragment;
 
-import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
-import android.view.LayoutInflater;
+import android.support.v4.view.ViewPager;
+import android.util.Log;
 import android.view.View;
-import android.view.ViewGroup;
 
 import com.tracyis.bililive.R;
+import com.tracyis.bililive.adapter.RankingAdapter;
+import com.tracyis.bililive.bean.RankingBean;
+import com.tracyis.bililive.network.MyRetroCallback;
+import com.tracyis.bililive.network.MyRetrofit;
+import com.tracyis.bililive.view.TabPageIndicator;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import retrofit2.Call;
 
 /**
  * Created by Trasys on 2017/5/23.
  */
-public class RankingFragment extends Fragment {
+public class RankingFragment extends BaseFragment {
     private static final String TAG = "InteractFragment";
+    private ViewPager mVp;
+    private TabPageIndicator mTpi;
+    private List<RankingBean.DataBean.ListBean> mDatas = new ArrayList<>();
+    private RankingAdapter mRankingAdapter;
 
-    @Nullable
     @Override
-    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-
-        View view = inflater.inflate(R.layout.fragment_interact, null);
+    protected View initView() {
+        View view = View.inflate(mContext, R.layout.fragment_ranking, null);
+        mVp = (ViewPager) view.findViewById(R.id.vp_ranking);
+        mTpi = (TabPageIndicator) view.findViewById(R.id.tpi_ranking);
         return view;
+    }
+
+    @Override
+    protected void initData() {
+        mRankingAdapter = new RankingAdapter(mContext,mDatas);
+        mVp.setAdapter(mRankingAdapter);
+        mTpi.setViewPager(mVp);
+
+        initListener();
+    }
+
+    private void initListener() {
+        mTpi.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+            @Override
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+
+            }
+
+            @Override
+            public void onPageSelected(int position) {
+                mVp.setCurrentItem(position);
+                Call<RankingBean> rankingBeanCall = MyRetrofit
+                        .getInstance()
+                        .getApi()
+                        .getRankingList();
+                rankingBeanCall.enqueue(new MyRetroCallback<RankingBean>() {
+                    @Override
+                    protected void onSuccess(RankingBean data) {
+                        mDatas = data.data.list;
+                        mRankingAdapter.notifyDataSetChanged();
+                        Log.d(TAG, "onSuccess: " + mDatas.get(0).uname);
+                    }
+
+                    @Override
+                    protected void onFail(String err) {
+
+                    }
+                });
+            }
+
+            @Override
+            public void onPageScrollStateChanged(int state) {
+
+            }
+        });
+    }
+
+    @Override
+    protected void requestNet() {
+        Call<RankingBean> rankingBeanCall = MyRetrofit
+                .getInstance()
+                .getApi()
+                .getRankingList();
+        rankingBeanCall.enqueue(new MyRetroCallback<RankingBean>() {
+            @Override
+            protected void onSuccess(RankingBean data) {
+                mDatas = data.data.list;
+                Log.d(TAG, "onSuccess: " + mDatas.get(0).uname);
+                mRankingAdapter.notifyDataSetChanged();
+            }
+
+            @Override
+            protected void onFail(String err) {
+
+            }
+        });
+
     }
 }
