@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="wrap_content"
+              android:background="@drawable/bg_ll"
+              android:layout_height="wrap_content"
+              android:orientation="vertical">
+
+    <com.tracyis.bililive.view.RoundedImageView
+        android:id="@+id/iv_preview"
+        android:layout_width="160dp"
+        android:scaleType="fitXY"
+        android:layout_height="100dp"
+        android:src="@drawable/pic2"/>
+
+    <TextView
+        android:id="@+id/item_live_des"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="4dp"
+        android:lines="2"
+        android:textColor="#000"
+        android:text="直播内容"
+        android:textSize="12sp"/>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="4dp">
+
+        <TextView
+            android:id="@+id/item_live_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="名字"
+            android:textColor="@android:color/darker_gray"
+            android:textSize="10sp"/>
+
+        <TextView
+            android:id="@+id/item_live_viewer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:drawableLeft="@drawable/ucrop_ic_reset"
+            android:text="观众"
+            android:textColor="@android:color/darker_gray"
+            android:textSize="10sp"/>
+    </RelativeLayout>
+
+</LinearLayout>
