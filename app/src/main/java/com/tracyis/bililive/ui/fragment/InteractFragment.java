@@ -1,6 +1,8 @@
 package com.tracyis.bililive.ui.fragment;
 
 import android.content.Context;
+import android.os.Handler;
+import android.os.Message;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -39,6 +41,7 @@ public class InteractFragment extends BaseFragment {
     private View mView;
     private List<DanmuBean.DataBean.RoomBean> mRoomMes = new ArrayList<>();
     private RvAdapter mRvAdapter;
+    private boolean isRefresh = true;
 
     @Override
     protected View initView() {
@@ -54,6 +57,34 @@ public class InteractFragment extends BaseFragment {
         mRvInteract.setLayoutManager(new LinearLayoutManager(mContext));
         mRvInteract.setHasFixedSize(true);
         mRvInteract.setAdapter(mRvAdapter);
+
+        new Thread() {
+            @Override
+            public void run() {
+                while (isRefresh) {
+                    try {
+                        Thread.sleep(5000);
+                        handler.sendMessage(handler.obtainMessage());
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                }
+
+            }
+        }.start();
+    }
+
+    public Handler handler = new Handler() {
+        public void handleMessage(Message msg) {
+            super.handleMessage(msg);
+            refreshDanmu();
+        }
+    };
+
+    private void refreshDanmu() {
+        Log.d(TAG, "refreshDanmu: 定时刷新弹幕");
+        mRoomMes.clear();
+        requestNet();
     }
 
     @Override
@@ -77,6 +108,7 @@ public class InteractFragment extends BaseFragment {
                 // mRoomMes = data.data.room; 千万不要使用
                 mRoomMes.addAll(data.data.room);
                 Log.d(TAG, "onSuccess: 请求网络数据" + mRoomMes.size());
+                mRvInteract.smoothScrollToPosition(mRoomMes.size());
                 mRvAdapter.notifyDataSetChanged();
             }
 
@@ -91,6 +123,7 @@ public class InteractFragment extends BaseFragment {
     public void onDestroyView() {
         super.onDestroyView();
         ButterKnife.reset(this);
+        isRefresh = false;
     }
 
     @OnClick({R.id.rv_interact,

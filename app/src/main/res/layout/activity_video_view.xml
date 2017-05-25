@@ -13,13 +13,11 @@
         android:id="@+id/tpi_vva"
         android:layout_width="match_parent"
         android:layout_height="50dp"/>
-
     <android.support.v4.view.ViewPager
         android:id="@+id/vp_vva"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1">
-    </android.support.v4.view.ViewPager>
+        android:layout_weight="1"/>
 
 
 </LinearLayout>

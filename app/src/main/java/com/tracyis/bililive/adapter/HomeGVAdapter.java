@@ -12,7 +12,7 @@ import com.tracyis.bililive.R;
 /**
  * Created by Trasys on 2017/5/20.
  */
-public class GvHomeAdapter extends BaseAdapter {
+public class HomeGVAdapter extends BaseAdapter {
     private static final String TAG = "GvHomeAdaer";
     private final Context mContext;
     private final String[] items;
@@ -23,7 +23,7 @@ public class GvHomeAdapter extends BaseAdapter {
 
 
 
-    public GvHomeAdapter(Context context) {
+    public HomeGVAdapter(Context context) {
         mContext = context;
         items = mContext.getResources().getStringArray(R.array.live_category);
     }

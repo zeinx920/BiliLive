@@ -1,9 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:app="http://schemas.android.com/apk/res-auto"
               android:layout_width="match_parent"
               android:layout_height="match_parent"
               android:background="#eaeaea"
               android:orientation="vertical">
+
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/tb_liveList"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorAccent"
+        app:navigationIcon="@drawable/ic_clip_back_white"
+        app:subtitleTextColor="#fff"
+        app:title="直播列表标题"
+        app:titleTextColor="#fff">
+
+        <ImageView
+            android:id="@+id/iv_livelist_search"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right"
+            android:layout_marginRight="10dp"
+            android:src="@drawable/ic_toolbar_menu_search"/>
+    </android.support.v7.widget.Toolbar>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -11,23 +32,19 @@
         android:gravity="center_vertical"
         android:orientation="horizontal">
 
-        <HorizontalScrollView
+        <com.tracyis.bililive.view.HorizontalListView
+            android:id="@+id/hlv_livelist"
+            android:listSelector="@drawable/selector_topic_bg"
             android:layout_width="0dp"
-            android:layout_height="50dp"
-            android:layout_weight="1">
-
-            <LinearLayout
-                android:id="@+id/ll_live_list"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:gravity="center_vertical"
-                android:orientation="horizontal"/>
-        </HorizontalScrollView>
+            android:layout_weight="1"
+            android:layout_height="50dp"/>
 
         <ImageView
-            android:layout_width="20dp"
-            android:layout_height="20dp"
-            android:src="@drawable/ucrop_ic_rotate"/>
+            android:layout_marginLeft="10dp"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginRight="16dp"
+            android:src="@drawable/ic_arrow_down"/>
     </LinearLayout>
 
     <GridView
