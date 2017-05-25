@@ -52,6 +52,7 @@ public class InteractFragment extends BaseFragment {
     protected void initData() {
         mRvAdapter = new RvAdapter(mContext, mRoomMes);
         mRvInteract.setLayoutManager(new LinearLayoutManager(mContext));
+        mRvInteract.setHasFixedSize(true);
         mRvInteract.setAdapter(mRvAdapter);
     }
 
@@ -71,7 +72,11 @@ public class InteractFragment extends BaseFragment {
         rankingBeanCall.enqueue(new MyRetroCallback<DanmuBean>() {
             @Override
             protected void onSuccess(DanmuBean data) {
-                mRoomMes = data.data.room;
+
+                //巨坑!!
+                // mRoomMes = data.data.room; 千万不要使用
+                mRoomMes.addAll(data.data.room);
+                Log.d(TAG, "onSuccess: 请求网络数据" + mRoomMes.size());
                 mRvAdapter.notifyDataSetChanged();
             }
 
@@ -96,7 +101,6 @@ public class InteractFragment extends BaseFragment {
             case R.id.rv_interact:
                 break;
             case R.id.et_danmu:
-                //打开软键盘
                 showSoftKeyboard();
                 break;
             case R.id.iv_interact_send:
@@ -109,19 +113,21 @@ public class InteractFragment extends BaseFragment {
                 mRoomMes.add(mRoomMes.size(), bean);
                 mRvAdapter.notifyItemInserted(mRoomMes.size());
                 mTvDanmu.setText("");
+                mRvInteract.smoothScrollToPosition(mRoomMes.size());
                 Toast.makeText(mContext, "用户发弹幕", Toast.LENGTH_SHORT).show();
-                //关闭软键盘
                 HideSoftKeyboard();
                 break;
         }
     }
 
+    //打开软键盘
     private void showSoftKeyboard() {
         mTvDanmu.requestFocus();
         InputMethodManager imm = (InputMethodManager) getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
         imm.showSoftInput(mTvDanmu, 0);
     }
 
+    //关闭软键盘
     private void HideSoftKeyboard() {
         InputMethodManager imm = (InputMethodManager) getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
         if (imm != null) {

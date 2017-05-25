@@ -61,8 +61,9 @@ public class VideoViewActivity extends AppCompatActivity {
         mVideoView.start();
 
         mVp.setAdapter(new VideoViewAdapter(getSupportFragmentManager(),mRoomID));
-        mTpi.setViewPager(mVp);
         mVp.setCurrentItem(0);
+        mVp.setOffscreenPageLimit(0);
+        mTpi.setViewPager(mVp);
     }
 
     private void initView() {
