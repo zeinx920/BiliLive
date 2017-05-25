@@ -24,11 +24,13 @@ public abstract class BaseFragment extends Fragment {
         mView = initView();
         initData();
         requestNet();
+        initListener();
         return mView;
     }
 
-    protected void requestNet() {
-    }
+    public void requestNet(){}
+
+    protected void initListener(){}
 
     protected abstract View initView();
 

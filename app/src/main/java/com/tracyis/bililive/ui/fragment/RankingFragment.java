@@ -36,14 +36,13 @@ public class RankingFragment extends BaseFragment {
 
     @Override
     protected void initData() {
-        mRankingAdapter = new RankingAdapter(mContext,mDatas);
+        mRankingAdapter = new RankingAdapter(mContext, mDatas);
         mVp.setAdapter(mRankingAdapter);
         mTpi.setViewPager(mVp);
-
-        initListener();
     }
 
-    private void initListener() {
+    @Override
+    protected void initListener() {
         mTpi.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
             public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
@@ -53,23 +52,23 @@ public class RankingFragment extends BaseFragment {
             @Override
             public void onPageSelected(int position) {
                 mVp.setCurrentItem(position);
-//                Call<RankingBean> rankingBeanCall = MyRetrofit
-//                        .getInstance()
-//                        .getApi()
-//                        .getRankingList();
-//                rankingBeanCall.enqueue(new MyRetroCallback<RankingBean>() {
-//                    @Override
-//                    protected void onSuccess(RankingBean data) {
-//                        mDatas = data.data.list;
-//                        mRankingAdapter.notifyDataSetChanged();
-//                        Log.d(TAG, "onSuccess: " + mDatas.get(0).uname);
-//                    }
-//
-//                    @Override
-//                    protected void onFail(String err) {
-//                        Log.d(TAG, "onFail: "+err);
-//                    }
-//                });
+                Call<RankingBean> rankingBeanCall = MyRetrofit
+                        .getInstance()
+                        .getApi()
+                        .getRankingList();
+                rankingBeanCall.enqueue(new MyRetroCallback<RankingBean>() {
+                    @Override
+                    protected void onSuccess(RankingBean data) {
+                        mDatas = data.data;
+                        mRankingAdapter.notifyDataSetChanged();
+                        Log.d(TAG, "onSuccess: " + mDatas.get(0));
+                    }
+
+                    @Override
+                    protected void onFail(String err) {
+                        Log.d(TAG, "onFail: " + err);
+                    }
+                });
             }
 
             @Override
@@ -80,7 +79,7 @@ public class RankingFragment extends BaseFragment {
     }
 
     @Override
-    protected void requestNet() {
+    public void requestNet() {
         Call<RankingBean> rankingBeanCall = MyRetrofit
                 .getInstance()
                 .getApi()
@@ -96,7 +95,7 @@ public class RankingFragment extends BaseFragment {
 
             @Override
             protected void onFail(String err) {
-                Log.d(TAG, "onFail: " +err);
+                Log.d(TAG, "onFail: " + err);
             }
         });
 

@@ -12,7 +12,7 @@ public class ShipFragment extends BaseFragment {
 
 
     @Override
-    protected void requestNet() {
+    public void requestNet() {
 
     }
 

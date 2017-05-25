@@ -6,23 +6,23 @@
               android:padding="5dp">
 
     <TextView
-        android:id="@+id/tv_danmu_level"
+        android:id="@+id/tv_danmu_admin_level"
         android:layout_width="30dp"
         android:textSize="10sp"
         android:layout_height="wrap_content"
-        android:background="@drawable/bg_tv"/>
+        android:background="@drawable/bg_tv_danmu"/>
 
     <TextView
-        android:id="@+id/tv_danmu_name"
+        android:id="@+id/tv_danmu_admin_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="5dp"
         android:textSize="10sp"
         android:text="名字"
-        android:textColor="@android:color/darker_gray"/>
+        android:textColor="@android:color/holo_red_dark"/>
 
     <TextView
-        android:id="@+id/tv_danmu_text"
+        android:id="@+id/tv_danmu_admin_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="5dp"

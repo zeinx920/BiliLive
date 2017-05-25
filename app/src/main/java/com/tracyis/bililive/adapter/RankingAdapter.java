@@ -2,6 +2,7 @@ package com.tracyis.bililive.adapter;
 
 import android.content.Context;
 import android.support.v4.view.PagerAdapter;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
@@ -16,13 +17,14 @@ import java.util.List;
  */
 public class RankingAdapter extends PagerAdapter {
     private static final String TAG = "RankingAdapter";
-    private String[] titles = {"七日榜","助推榜","舰队"};
+    private String[] titles = {"七日榜","助推榜","粉丝榜"};
     private Context mContext;
     private List<RankingBean.DataBean> data = new ArrayList<>();
 
     public RankingAdapter(Context context, List<RankingBean.DataBean> datas) {
         mContext=context;
         data = datas;
+        Log.d(TAG, "RankingAdapter: "+data.size());
     }
 
     @Override

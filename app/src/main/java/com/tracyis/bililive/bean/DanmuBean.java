@@ -50,7 +50,7 @@ public class DanmuBean {
             public int svip;
             public int rank;
             public int teamid;
-            public int rnd;
+            public double rnd;
             public String user_title;
             public int guard_level;
             public List<String> medal;

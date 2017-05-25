@@ -14,11 +14,11 @@ public class CustomTextView extends TextView {
     private static final String TAG = "CustomeTextView";
 
     public CustomTextView(Context context) {
-        super(context);
+        this(context,null);
     }
 
     public CustomTextView(Context context, AttributeSet attrs) {
-        super(context, attrs);
+        this(context, attrs,0);
     }
 
     public CustomTextView(Context context, AttributeSet attrs, int defStyleAttr) {

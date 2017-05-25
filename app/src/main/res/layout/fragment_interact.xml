@@ -2,6 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
               android:layout_width="match_parent"
               android:layout_height="match_parent"
+              android:fitsSystemWindows="true"
               android:orientation="vertical">
 
     <android.support.v7.widget.RecyclerView
@@ -12,7 +13,7 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="40dp"
+        android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:padding="4dp">
 
@@ -21,15 +22,18 @@
             android:layout_height="match_parent"
             android:src="@drawable/ic_live_activity_gift"/>
 
-        <TextView
-            android:id="@+id/tv_danmu"
+        <EditText
+            android:id="@+id/et_danmu"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:background="@drawable/bg_tv"
-            android:gravity="center"
-            android:text="输入想发送的弹幕"
-            android:textAlignment="center"
-            android:textSize="18sp"/>
+            android:hint="输入想发送的弹幕"
+            android:textSize="16sp"
+            android:textColorHint="@android:color/darker_gray"/>
+        <ImageView
+            android:id="@+id/iv_interact_send"
+            android:src="@drawable/ic_send_grey"
+            android:layout_width="40dp"
+            android:layout_height="40dp"/>
     </LinearLayout>
 </LinearLayout>

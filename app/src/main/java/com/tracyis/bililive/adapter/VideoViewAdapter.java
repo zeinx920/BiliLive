@@ -3,6 +3,7 @@ package com.tracyis.bililive.adapter;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
+import android.util.Log;
 import android.view.View;
 
 import com.tracyis.bililive.ui.FragmentFactory;
@@ -35,6 +36,7 @@ public class VideoViewAdapter extends FragmentStatePagerAdapter {
     public Fragment getItem(int position) {
         BaseFragment fragment = FragmentFactory.getInstance().getFragment(position);
         fragment.setRoom(mRoom);
+        Log.d(TAG, "加载fragment: "+mRoom);
         return fragment;
     }
 

@@ -12,6 +12,8 @@ import tv.danmaku.ijk.media.player.IjkMediaPlayer;
 import tv.danmaku.ijk.media.widget.media.IjkVideoView;
 
 public class VideoViewActivity extends AppCompatActivity {
+    private static final String TAG = "VideoViewActivity";
+
     private IjkVideoView mVideoView;
     private boolean mBackPressed;
     private String mVideoPath;
@@ -58,16 +60,15 @@ public class VideoViewActivity extends AppCompatActivity {
        }
         mVideoView.start();
 
+        mVp.setAdapter(new VideoViewAdapter(getSupportFragmentManager(),mRoomID));
+        mTpi.setViewPager(mVp);
+        mVp.setCurrentItem(0);
     }
 
     private void initView() {
         mVideoView = (IjkVideoView) findViewById(R.id.video_view);
         mVp = (ViewPager) findViewById(R.id.vp_vva);
         mTpi = (TabPageIndicator) findViewById(R.id.tpi_vva);
-
-        mVp.setAdapter(new VideoViewAdapter(getSupportFragmentManager(),mRoomID));
-        mTpi.setViewPager(mVp);
-        mVp.setCurrentItem(0);
     }
 
     @Override
