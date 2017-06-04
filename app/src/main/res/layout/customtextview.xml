@@ -1,8 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <TextView xmlns:android="http://schemas.android.com/apk/res/android"
-          android:layout_width="match_parent"
-          android:layout_height="match_parent"
-          android:background="@drawable/bg_tv"
-          android:orientation="vertical">
+          android:text="大沙发上撒爱上"
+          android:layout_gravity="center"
+          android:textSize="14sp"
+          android:textAlignment="center"
+          android:clickable="true"
+          android:focusable="true"
+          android:textColor="@drawable/bg_tv_hlv"
+          android:focusableInTouchMode="true"
+          android:background="@drawable/selector_topic_bg"
+          android:layout_width="wrap_content"
+          android:layout_height="20dp">
 
 </TextView>

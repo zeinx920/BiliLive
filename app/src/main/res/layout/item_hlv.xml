@@ -9,12 +9,14 @@
         android:id="@+id/tv_hlv"
         android:text="大沙发上撒爱上"
         android:layout_gravity="center"
-        android:textSize="16sp"
+        android:textSize="14sp"
+        android:textAlignment="center"
         android:clickable="true"
         android:focusable="true"
+        android:textColor="@drawable/bg_tv_hlv"
         android:focusableInTouchMode="true"
         android:background="@drawable/selector_topic_bg"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
+        android:layout_height="20dp"/>
 
 </LinearLayout>

@@ -18,6 +18,7 @@
         android:padding="4dp">
 
         <ImageView
+            android:id="@+id/iv_sendgift"
             android:layout_width="50dp"
             android:layout_height="wrap_content"
             android:src="@drawable/ic_live_activity_gift"/>

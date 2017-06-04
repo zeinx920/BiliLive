@@ -5,6 +5,7 @@ import android.os.Handler;
 import android.os.Message;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -128,27 +129,35 @@ public class InteractFragment extends BaseFragment {
 
     @OnClick({R.id.rv_interact,
             R.id.et_danmu,
+            R.id.iv_sendgift,
             R.id.iv_interact_send})
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.rv_interact:
+              break;
+            case R.id.iv_sendgift:
+                Toast.makeText(getContext(), "刷礼物", Toast.LENGTH_SHORT).show();
                 break;
             case R.id.et_danmu:
                 showSoftKeyboard();
                 break;
             case R.id.iv_interact_send:
                 String mes = mTvDanmu.getText().toString();
-                DanmuBean.DataBean.RoomBean bean = new DanmuBean.DataBean.RoomBean();
-                bean.nickname = "Admin";
-                bean.text = mes;
-                bean.user_level = new ArrayList<>();
-                bean.user_level.add(0, "VIP");
-                mRoomMes.add(mRoomMes.size(), bean);
-                mRvAdapter.notifyItemInserted(mRoomMes.size());
-                mTvDanmu.setText("");
-                mRvInteract.smoothScrollToPosition(mRoomMes.size());
-                Toast.makeText(mContext, "用户发弹幕", Toast.LENGTH_SHORT).show();
-                HideSoftKeyboard();
+                if (!TextUtils.isEmpty(mes)) {
+                    DanmuBean.DataBean.RoomBean bean = new DanmuBean.DataBean.RoomBean();
+                    bean.nickname = "Admin";
+                    bean.text = mes;
+                    bean.user_level = new ArrayList<>();
+                    bean.user_level.add(0, "VIP");
+                    mRoomMes.add(mRoomMes.size(), bean);
+                    mRvAdapter.notifyItemInserted(mRoomMes.size());
+                    mTvDanmu.setText("");
+                    mRvInteract.smoothScrollToPosition(mRoomMes.size());
+                    Toast.makeText(mContext, "用户发弹幕", Toast.LENGTH_SHORT).show();
+                    HideSoftKeyboard();
+                }
+                Toast.makeText(getContext(), "弹幕不能为空", Toast.LENGTH_SHORT).show();
+
                 break;
         }
     }
@@ -168,5 +177,4 @@ public class InteractFragment extends BaseFragment {
                     0);
         }
     }
-
 }

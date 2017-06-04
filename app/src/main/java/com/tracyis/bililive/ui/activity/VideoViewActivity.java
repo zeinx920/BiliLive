@@ -3,6 +3,7 @@ package com.tracyis.bililive.ui.activity;
 import android.os.Bundle;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 
 import com.tracyis.bililive.R;
 import com.tracyis.bililive.adapter.VideoViewAdapter;
@@ -56,6 +57,7 @@ public class VideoViewActivity extends AppCompatActivity {
         IjkMediaPlayer.loadLibrariesOnce(null);
         IjkMediaPlayer.native_profileBegin("libijkplayer.so");
         if (mVideoPath != null) {
+            Log.d(TAG, "initData: "+mVideoPath);
             mVideoView.setVideoPath(mVideoPath);
        }
         mVideoView.start();

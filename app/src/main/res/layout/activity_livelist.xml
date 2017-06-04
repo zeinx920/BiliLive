@@ -37,9 +37,10 @@
             android:listSelector="@drawable/selector_topic_bg"
             android:layout_width="0dp"
             android:layout_weight="1"
-            android:layout_height="50dp"/>
+            android:layout_height="40dp"/>
 
         <ImageView
+            android:id="@+id/iv_livelist_expand"
             android:layout_marginLeft="10dp"
             android:layout_width="30dp"
             android:layout_height="30dp"
