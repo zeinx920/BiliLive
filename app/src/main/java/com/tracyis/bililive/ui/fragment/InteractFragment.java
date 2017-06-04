@@ -144,6 +144,9 @@ public class InteractFragment extends BaseFragment {
             case R.id.iv_interact_send:
                 String mes = mTvDanmu.getText().toString();
                 if (!TextUtils.isEmpty(mes)) {
+                    if (mOnSendDanmuListener != null) {
+                        mOnSendDanmuListener.sendAdminDanmu(mes);
+                    }
                     DanmuBean.DataBean.RoomBean bean = new DanmuBean.DataBean.RoomBean();
                     bean.nickname = "Admin";
                     bean.text = mes;
@@ -176,5 +179,15 @@ public class InteractFragment extends BaseFragment {
             imm.hideSoftInputFromWindow(getActivity().getWindow().getDecorView().getWindowToken(),
                     0);
         }
+    }
+
+    public interface OnSendDanmuListener{
+        void sendAdminDanmu(String danmu);
+    }
+
+    public OnSendDanmuListener mOnSendDanmuListener;
+
+    public void setOnSendDanmuListener(OnSendDanmuListener onSendDanmuListener){
+        mOnSendDanmuListener = onSendDanmuListener;
     }
 }

@@ -40,4 +40,8 @@ dependencies {
     //    # ExoPlayer as IMediaPlayer: optional, experimental
     compile 'tv.danmaku.ijk.media:ijkplayer-exo:0.6.1'
     compile 'com.android.support:recyclerview-v7:25+'
+
+    //烈焰弹幕使
+    compile 'com.github.ctiao:DanmakuFlameMaster:0.8.3'
+    compile 'com.github.ctiao:ndkbitmap-armv7a:0.8.3'
 }

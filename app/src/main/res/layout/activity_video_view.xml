@@ -5,14 +5,32 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <tv.danmaku.ijk.media.widget.media.IjkVideoView
-        android:id="@+id/video_view"
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="200dp"/>
+        android:layout_height="200dp">
+
+        <tv.danmaku.ijk.media.widget.media.IjkVideoView
+            android:id="@+id/video_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+        <master.flame.danmaku.ui.widget.DanmakuView
+            android:id="@+id/view_danmu"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+        <TextView
+            android:id="@+id/tv_danmu_swi"
+            android:layout_alignParentBottom="true"
+            android:text="弹幕开关"
+            android:layout_margin="5dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+    </RelativeLayout>
+
     <com.tracyis.bililive.view.TabPageIndicator
         android:id="@+id/tpi_vva"
         android:layout_width="match_parent"
         android:layout_height="50dp"/>
+
     <android.support.v4.view.ViewPager
         android:id="@+id/vp_vva"
         android:layout_width="match_parent"
