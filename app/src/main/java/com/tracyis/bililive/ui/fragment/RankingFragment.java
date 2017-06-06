@@ -63,11 +63,6 @@ public class RankingFragment extends BaseFragment {
                         mRankingAdapter.notifyDataSetChanged();
                         Log.d(TAG, "onSuccess: " + mDatas.get(0));
                     }
-
-                    @Override
-                    protected void onFail(String err) {
-                        Log.d(TAG, "onFail: " + err);
-                    }
                 });
             }
 
@@ -93,10 +88,6 @@ public class RankingFragment extends BaseFragment {
                 mRankingAdapter.notifyDataSetChanged();
             }
 
-            @Override
-            protected void onFail(String err) {
-                Log.d(TAG, "onFail: " + err);
-            }
         });
 
     }

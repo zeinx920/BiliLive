@@ -34,8 +34,10 @@ import butterknife.OnClick;
 /**
  * Created by Trasys on 2017/5/22.
  */
+
 public class LiveListActivity extends AppCompatActivity {
     private static final String TAG = "LiveListActivity";
+
     @InjectView(R.id.tb_liveList)
     Toolbar mTbLiveList;
     @InjectView(R.id.hlv_livelist)
@@ -46,6 +48,7 @@ public class LiveListActivity extends AppCompatActivity {
     ImageView ivLivelistSearch;
     @InjectView(R.id.iv_livelist_expand)
     ImageView ivLivelistExpand;
+
     private LiveBean mBean;
     private String mTitle;
     private ArrayList<String> mLiveTopList = new ArrayList<>();
@@ -55,7 +58,6 @@ public class LiveListActivity extends AppCompatActivity {
     private TextView mTvHot;
     private FlowLayout mFl;
     private Random random = new Random();
-
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -82,13 +84,13 @@ public class LiveListActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
         mTbLiveList.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 finish();
             }
         });
-
     }
 
     private void initData() {
@@ -103,6 +105,7 @@ public class LiveListActivity extends AppCompatActivity {
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.iv_livelist_search:
+
                 break;
             case R.id.iv_livelist_expand:
                 initPopView();
@@ -135,8 +138,8 @@ public class LiveListActivity extends AppCompatActivity {
     //流式布局
     private void initRv() {
         mRvPop.setLayoutManager(new StaggeredGridLayoutManager(4, StaggeredGridLayoutManager.GAP_HANDLING_LAZY));
-        if (!mLiveTopList.contains("全部")){
-            mLiveTopList.add(0,"全部");
+        if (!mLiveTopList.contains("全部")) {
+            mLiveTopList.add(0, "全部");
         }
         mRvPop.setAdapter(new RvPopAdapter(this, mLiveTopList));
 //        mFl.setPadding(18, 18, 18, 18);

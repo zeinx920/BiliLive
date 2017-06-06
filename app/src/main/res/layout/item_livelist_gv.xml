@@ -1,25 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
               android:layout_width="wrap_content"
-              android:background="@drawable/bg_ll"
               android:layout_height="wrap_content"
+              android:background="@drawable/bg_ll"
               android:orientation="vertical">
 
     <com.tracyis.bililive.view.RoundedImageView
         android:id="@+id/iv_preview"
         android:layout_width="160dp"
-        android:scaleType="fitXY"
         android:layout_height="100dp"
+        android:scaleType="fitXY"
         android:src="@drawable/pic2"/>
 
     <TextView
         android:id="@+id/item_live_des"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="4dp"
         android:lines="2"
-        android:textColor="#000"
+        android:padding="4dp"
         android:text="直播内容"
+        android:textColor="#000"
         android:textSize="12sp"/>
 
     <RelativeLayout
@@ -36,10 +36,10 @@
             android:textSize="12sp"/>
 
         <ImageView
-            android:layout_toLeftOf="@+id/item_live_viewer"
-            android:src="@drawable/ic_live_player_audience"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+            android:layout_toLeftOf="@+id/item_live_viewer"
+            android:src="@drawable/ic_live_player_audience"/>
 
         <TextView
             android:id="@+id/item_live_viewer"
@@ -50,5 +50,4 @@
             android:textColor="@android:color/darker_gray"
             android:textSize="12sp"/>
     </RelativeLayout>
-
 </LinearLayout>

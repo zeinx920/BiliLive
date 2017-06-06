@@ -89,7 +89,6 @@ public class VideoViewActivity extends AppCompatActivity {
 
             @Override
             public void drawingFinished() {
-
             }
         });
         mDanmakuContext = DanmakuContext.create();
@@ -109,10 +108,6 @@ public class VideoViewActivity extends AppCompatActivity {
                 mRoomMes.addAll(data.data.room);
             }
 
-            @Override
-            protected void onFail(String err) {
-                Log.d(TAG, "onFail: " + err);
-            }
         });
     }
 

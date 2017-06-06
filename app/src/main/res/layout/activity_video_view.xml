@@ -13,17 +13,19 @@
             android:id="@+id/video_view"
             android:layout_width="match_parent"
             android:layout_height="match_parent"/>
+
         <master.flame.danmaku.ui.widget.DanmakuView
             android:id="@+id/view_danmu"
             android:layout_width="match_parent"
             android:layout_height="match_parent"/>
+
         <TextView
             android:id="@+id/tv_danmu_swi"
-            android:layout_alignParentBottom="true"
-            android:text="弹幕开关"
-            android:layout_margin="5dp"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_margin="6dp"
+            android:text="弹幕开关"/>
     </RelativeLayout>
 
     <com.tracyis.bililive.view.TabPageIndicator
@@ -36,6 +38,4 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"/>
-
-
 </LinearLayout>

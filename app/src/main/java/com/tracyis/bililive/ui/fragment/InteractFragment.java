@@ -112,11 +112,6 @@ public class InteractFragment extends BaseFragment {
                 mRvInteract.smoothScrollToPosition(mRoomMes.size());
                 mRvAdapter.notifyDataSetChanged();
             }
-
-            @Override
-            protected void onFail(String err) {
-                Log.d(TAG, "onFail: " + err);
-            }
         });
     }
 

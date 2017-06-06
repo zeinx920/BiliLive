@@ -9,7 +9,6 @@ import android.view.Menu;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.GridView;
-import android.widget.Toast;
 
 import com.tracyis.bililive.R;
 import com.tracyis.bililive.adapter.HomeGVAdapter;
@@ -62,25 +61,20 @@ public class HomeActivity extends AppCompatActivity {
         categoryBeanCall.enqueue(new MyRetroCallback<LiveCategoryBean>() {
             @Override
             protected void onSuccess(LiveCategoryBean data) {
-                LiveCategoryBean datas = data;
-                mLiveTopList.put(0, datas.data._$1);
-                mLiveTopList.put(1, datas.data._$2);
-                mLiveTopList.put(2, datas.data._$3);
-                mLiveTopList.put(3, datas.data._$4);
-                mLiveTopList.put(4, datas.data._$99);
-                mLiveTopList.put(5, datas.data._$6);
-                mLiveTopList.put(6, datas.data._$7);
-                mLiveTopList.put(7, datas.data._$8);
-                mLiveTopList.put(8, datas.data._$9);
-                mLiveTopList.put(9, datas.data._$10);
-                mLiveTopList.put(10, datas.data._$11);
-                mLiveTopList.put(11, datas.data._$12);
+                mLiveTopList.put(0, data.data._$1);
+                mLiveTopList.put(1, data.data._$2);
+                mLiveTopList.put(2, data.data._$3);
+                mLiveTopList.put(3, data.data._$4);
+                mLiveTopList.put(4, data.data._$99);
+                mLiveTopList.put(5, data.data._$6);
+                mLiveTopList.put(6, data.data._$7);
+                mLiveTopList.put(7, data.data._$8);
+                mLiveTopList.put(8, data.data._$9);
+                mLiveTopList.put(9, data.data._$10);
+                mLiveTopList.put(10, data.data._$11);
+                mLiveTopList.put(11, data.data._$12);
             }
 
-            @Override
-            protected void onFail(String err) {
-                Log.d(TAG, "onFail: " + err);
-            }
         });
     }
 
@@ -108,11 +102,6 @@ public class HomeActivity extends AppCompatActivity {
                 intent.putExtra("topList", (Serializable) mLiveTopList.get(position));
                 Log.d(TAG, "onSuccess: " + mLiveTopList.get(position) + "");
                 startActivity(intent);
-            }
-
-            @Override
-            protected void onFail(String err) {
-                Toast.makeText(HomeActivity.this, err, Toast.LENGTH_SHORT).show();
             }
         });
 

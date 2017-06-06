@@ -20,6 +20,9 @@ public interface Api {
     @POST("userinfo")
     Call<Object> getPrivateData();
 
+    @POST("/appApi/v1.0/common/sendPhoneCode")
+    Call<Object> register(@Query("mobilePhone") String phone);
+
     @GET("/mobile/rooms?platform=android")
     Call<LiveBean> getLiveList(@Query("area_id") int area);
 
