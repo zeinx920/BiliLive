@@ -9,7 +9,6 @@ import java.util.List;
 public class LiveBean implements Serializable{
     private static final String TAG = "LiveBean";
 
-
     /**
      * code : 0
      * message : ok

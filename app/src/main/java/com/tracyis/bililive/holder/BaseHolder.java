@@ -15,11 +15,12 @@ public abstract class BaseHolder<T> {
     public BaseHolder(Context context) {
         mContext = context;
     }
+
     public abstract void setData(T t);
 
-    public View onInflateView(){
+    public View onInflateView() {
         View view = View.inflate(mContext, getResId(), null);
-        ButterKnife.inject(this,view);
+        ButterKnife.inject(this, view);
         return view;
     }
 

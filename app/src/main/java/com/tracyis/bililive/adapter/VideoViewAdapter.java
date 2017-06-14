@@ -24,7 +24,7 @@ public class VideoViewAdapter extends FragmentStatePagerAdapter {
 
     @Override
     public int getCount() {
-        return 3;
+        return titles.length;
     }
 
     @Override
@@ -36,7 +36,7 @@ public class VideoViewAdapter extends FragmentStatePagerAdapter {
     public Fragment getItem(int position) {
         BaseFragment fragment = FragmentFactory.getInstance().getFragment(position);
         fragment.setRoom(mRoom);
-        Log.d(TAG, "加载fragment: "+mRoom);
+        Log.d(TAG, "加载fragment: "+titles[position]);
         return fragment;
     }
 

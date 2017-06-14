@@ -25,19 +25,17 @@ public class LiveListHolder extends BaseHolder<LiveBean.DataBean> {
     TextView itemLiveViewer;
     private Context mContext;
 
-
     public LiveListHolder(Context context) {
         super(context);
         mContext = context;
     }
-
 
     @Override
     public void setData(LiveBean.DataBean bean) {
         Glide.with(mContext)
                 .load(bean.cover.src)
                 .into(ivPreview);
-        itemLiveName.setText(bean.owner.name + "");
+        itemLiveName.setText(String.valueOf(bean.owner.name));
         itemLiveDes.setText(bean.title + "");
         itemLiveViewer.setText(bean.online + "");
     }

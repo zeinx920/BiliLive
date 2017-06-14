@@ -8,7 +8,6 @@ import java.util.List;
 public class RankingBean {
     private static final String TAG = "RankingBean";
 
-
     /**
      * code : 0
      * message : OK

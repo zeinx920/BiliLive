@@ -15,6 +15,7 @@ import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.PopupWindow;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.tracyis.bililive.R;
 import com.tracyis.bililive.adapter.HlvAdapter;
@@ -105,6 +106,7 @@ public class LiveListActivity extends AppCompatActivity {
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.iv_livelist_search:
+                Toast.makeText(this, "开始搜索", Toast.LENGTH_SHORT).show();
 
                 break;
             case R.id.iv_livelist_expand:
@@ -149,7 +151,6 @@ public class LiveListActivity extends AppCompatActivity {
 //            view.setText(mLiveTopList.get(i));
 ////            view.setBackgroundColor(Color.GRAY);
 //
-//
 //            view.setTextColor(Color.WHITE);  //支持颜色渐变和常见图形的填充的drawable
 //            GradientDrawable gradientDrawable = new GradientDrawable();
 //            gradientDrawable.setShape(GradientDrawable.RECTANGLE);
@@ -159,7 +160,6 @@ public class LiveListActivity extends AppCompatActivity {
 //            int g = 100 + random.nextInt(155); //100-255
 //            int b = 100 + random.nextInt(155); //100-255
 //            gradientDrawable.setColor(Color.argb(a, r, g, b));
-//
 //
 //            //代码中实现选择器，实际上是2个drawable混合到一起
 //            StateListDrawable stateListDrawable = new StateListDrawable();

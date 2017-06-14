@@ -16,7 +16,7 @@ public class FragmentFactory {
     private static FragmentFactory sInstance;
 
     // 创建一个map集合，保存position对应的 Fragment，作为缓存复用
-    private static SparseArray<BaseFragment> mFragments = new SparseArray<>();
+    private SparseArray<BaseFragment> mFragments = new SparseArray<>();
 
     private FragmentFactory() {
     }

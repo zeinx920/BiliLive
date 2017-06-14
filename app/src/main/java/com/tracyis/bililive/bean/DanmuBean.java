@@ -8,7 +8,6 @@ import java.util.List;
 public class DanmuBean {
     private static final String TAG = "DanmuBean";
 
-
     /**
      * code : 0
      * message : OK
