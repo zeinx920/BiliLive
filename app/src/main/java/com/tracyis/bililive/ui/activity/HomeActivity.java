@@ -1,8 +1,6 @@
 package com.tracyis.bililive.ui.activity;
 
 import android.content.Intent;
-import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Menu;
@@ -21,11 +19,10 @@ import java.io.Serializable;
 import java.util.HashMap;
 import java.util.List;
 
-import butterknife.ButterKnife;
 import butterknife.InjectView;
 import retrofit2.Call;
 
-public class HomeActivity extends AppCompatActivity {
+public class HomeActivity extends BaseActivity {
     private static final String TAG = "HomeActivity";
     @InjectView(R.id.tb_home)
     Toolbar mTbHome;
@@ -36,24 +33,19 @@ public class HomeActivity extends AppCompatActivity {
     private String[] items;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_home);
-        ButterKnife.inject(this);
-        setSupportActionBar(mTbHome);
-
-        init();
-        requestData();
-        initListener();
-    }
-
-    @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_home, menu);
         return true;
     }
 
-    private void requestData() {
+    @Override
+    protected void initData() {
+        setSupportActionBar(mTbHome);
+        items = getResources().getStringArray(R.array.live_category);
+
+        HomeGVAdapter adapter = new HomeGVAdapter(this);
+        gvHome.setAdapter(adapter);
+
         Call<LiveCategoryBean> categoryBeanCall = MyRetrofit
                 .getInstance()
                 .getApi()
@@ -78,7 +70,13 @@ public class HomeActivity extends AppCompatActivity {
         });
     }
 
-    private void initListener() {
+    @Override
+    protected int getResId() {
+        return R.layout.activity_home;
+    }
+
+    @Override
+    protected void initListener() {
         gvHome.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -98,7 +96,7 @@ public class HomeActivity extends AppCompatActivity {
             protected void onSuccess(LiveBean data) {
                 Intent intent = new Intent(HomeActivity.this, LiveListActivity.class);
                 intent.putExtra("liveBean", data);
-                intent.putExtra("tb_title",items[position]);
+                intent.putExtra("tb_title", items[position]);
                 intent.putExtra("topList", (Serializable) mLiveTopList.get(position));
                 Log.d(TAG, "onSuccess: " + mLiveTopList.get(position) + "");
                 startActivity(intent);
@@ -107,10 +105,4 @@ public class HomeActivity extends AppCompatActivity {
 
     }
 
-    private void init() {
-        items = getResources().getStringArray(R.array.live_category);
-
-        HomeGVAdapter adapter = new HomeGVAdapter(this);
-        gvHome.setAdapter(adapter);
-    }
 }
