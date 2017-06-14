@@ -7,7 +7,7 @@
 
     <com.tracyis.bililive.view.RoundedImageView
         android:id="@+id/iv_preview"
-        android:layout_width="160dp"
+        android:layout_width="wrap_content"
         android:layout_height="100dp"
         android:scaleType="fitXY"
         android:src="@drawable/pic2"/>
