@@ -7,7 +7,6 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.text.TextUtils;
 import android.util.Log;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
@@ -39,17 +38,13 @@ public class InteractFragment extends BaseFragment {
     EditText mTvDanmu;
     @InjectView(R.id.iv_interact_send)
     ImageView mIvSend;
-    private View mView;
     private List<DanmuBean.DataBean.RoomBean> mRoomMes = new ArrayList<>();
     private RvAdapter mRvAdapter;
     private boolean isRefresh = true;
 
     @Override
-    protected View initView() {
-        Log.d(TAG, "initView: 弹幕页面");
-        mView = LayoutInflater.from(mContext).inflate(R.layout.fragment_interact, null);
-        ButterKnife.inject(this, mView);
-        return mView;
+    protected int getResId() {
+        return R.layout.fragment_interact;
     }
 
     @Override
@@ -87,6 +82,7 @@ public class InteractFragment extends BaseFragment {
         mRoomMes.clear();
         requestNet();
     }
+
 
     @Override
     public void requestNet() {

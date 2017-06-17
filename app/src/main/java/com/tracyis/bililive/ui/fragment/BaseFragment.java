@@ -8,6 +8,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import butterknife.ButterKnife;
+
 /**
  * Created by Trasys on 2017/5/23.
  */
@@ -21,8 +23,8 @@ public abstract class BaseFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         mContext = getContext();
-        mView = initView();
-
+        mView = LayoutInflater.from(mContext).inflate(getResId(), null);
+        ButterKnife.inject(this,mView);
         return mView;
     }
 
@@ -33,12 +35,11 @@ public abstract class BaseFragment extends Fragment {
         requestNet();
         initListener();
     }
+    protected abstract int getResId();
 
     public void requestNet(){}
 
     protected void initListener(){}
-
-    protected abstract View initView();
 
     protected abstract void initData();
 

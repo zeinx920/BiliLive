@@ -53,10 +53,6 @@ public class LiveListActivity extends AppCompatActivity {
     private LiveBean mBean;
     private String mTitle;
     private ArrayList<String> mLiveTopList = new ArrayList<>();
-    private RecyclerView mRvPop;
-    private TextView mTvAll;
-    private TextView mTvNew;
-    private TextView mTvHot;
     private FlowLayout mFl;
     private Random random = new Random();
 
@@ -116,13 +112,22 @@ public class LiveListActivity extends AppCompatActivity {
         }
     }
 
+    @InjectView(R.id.rv_pop)
+    RecyclerView mRvPop;
+    @InjectView(R.id.tv_pop_all)
+    TextView mTvAll;
+    @InjectView(R.id.tv_pop_new)
+    TextView mTvNew;
+    @InjectView(R.id.tv_pop_hot)
+    TextView mTvHot;
+
     private void initPopView() {
         View popview = View.inflate(this, R.layout.view_pop, null);
-        mRvPop = (RecyclerView) popview.findViewById(R.id.rv_pop);
-//        mFl = (FlowLayout) popview.findViewById(R.id.fl_pop);
-        mTvAll = (TextView) popview.findViewById(R.id.tv_pop_all);
-        mTvNew = (TextView) popview.findViewById(R.id.tv_pop_new);
-        mTvHot = (TextView) popview.findViewById(R.id.tv_pop_hot);
+        ButterKnife.inject(this,popview);
+//        mRvPop = (RecyclerView) popview.findViewById(R.id.rv_pop);
+//        mTvAll = (TextView) popview.findViewById(R.id.tv_pop_all);
+//        mTvNew = (TextView) popview.findViewById(R.id.tv_pop_new);
+//        mTvHot = (TextView) popview.findViewById(R.id.tv_pop_hot);
 
         //初始化popwindow点击事件
         initPopEvent();
@@ -141,15 +146,15 @@ public class LiveListActivity extends AppCompatActivity {
     private void initRv() {
         mRvPop.setLayoutManager(new StaggeredGridLayoutManager(4, StaggeredGridLayoutManager.GAP_HANDLING_LAZY));
         if (!mLiveTopList.contains("全部")) {
-            mLiveTopList.add(0, "全部");
+            mLiveTopList.add("全部");
         }
         mRvPop.setAdapter(new RvPopAdapter(this, mLiveTopList));
 //        mFl.setPadding(18, 18, 18, 18);
-//        //给flowlayout添加textview
+//        给flowlayout添加textview
 //        for (int i = 0; i < mLiveTopList.size(); i++) {
 //            TextView view = new TextView(LiveListActivity.this);
 //            view.setText(mLiveTopList.get(i));
-////            view.setBackgroundColor(Color.GRAY);
+//            view.setBackgroundColor(Color.GRAY);
 //
 //            view.setTextColor(Color.WHITE);  //支持颜色渐变和常见图形的填充的drawable
 //            GradientDrawable gradientDrawable = new GradientDrawable();

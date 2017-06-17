@@ -10,7 +10,6 @@ import butterknife.ButterKnife;
  */
 public abstract class BaseActivity extends AppCompatActivity {
     private static final String TAG = "BaseActivity";
-    private int mResId;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {

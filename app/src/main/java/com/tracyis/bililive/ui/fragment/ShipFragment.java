@@ -1,7 +1,5 @@
 package com.tracyis.bililive.ui.fragment;
 
-import android.view.View;
-
 import com.tracyis.bililive.R;
 
 /**
@@ -12,13 +10,13 @@ public class ShipFragment extends BaseFragment {
 
 
     @Override
-    public void requestNet() {
-
+    protected int getResId() {
+        return R.layout.fragment_ship;
     }
 
     @Override
-    protected View initView() {
-        return View.inflate(mContext,R.layout.fragment_ship, null);
+    public void requestNet() {
+
     }
 
     @Override

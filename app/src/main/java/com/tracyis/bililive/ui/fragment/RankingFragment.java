@@ -2,7 +2,6 @@ package com.tracyis.bililive.ui.fragment;
 
 import android.support.v4.view.ViewPager;
 import android.util.Log;
-import android.view.View;
 
 import com.tracyis.bililive.R;
 import com.tracyis.bililive.adapter.RankingAdapter;
@@ -14,6 +13,8 @@ import com.tracyis.bililive.view.TabPageIndicator;
 import java.util.ArrayList;
 import java.util.List;
 
+import butterknife.ButterKnife;
+import butterknife.InjectView;
 import retrofit2.Call;
 
 /**
@@ -21,17 +22,16 @@ import retrofit2.Call;
  */
 public class RankingFragment extends BaseFragment {
     private static final String TAG = "RankingFragment";
-    private ViewPager mVp;
-    private TabPageIndicator mTpi;
+    @InjectView(R.id.tpi_ranking)
+    TabPageIndicator mTpi;
+    @InjectView(R.id.vp_ranking)
+    ViewPager mVp;
     private List<RankingBean.DataBean> mDatas = new ArrayList<>();
     private RankingAdapter mRankingAdapter;
 
     @Override
-    protected View initView() {
-        View view = View.inflate(mContext, R.layout.fragment_ranking, null);
-        mVp = (ViewPager) view.findViewById(R.id.vp_ranking);
-        mTpi = (TabPageIndicator) view.findViewById(R.id.tpi_ranking);
-        return view;
+    protected int getResId() {
+        return R.layout.fragment_ranking;
     }
 
     @Override
@@ -90,5 +90,11 @@ public class RankingFragment extends BaseFragment {
 
         });
 
+    }
+
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        ButterKnife.reset(this);
     }
 }
