@@ -2,9 +2,6 @@ package com.tracyis.bililive.ui.activity;
 
 import android.content.Intent;
 import android.graphics.drawable.BitmapDrawable;
-import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.support.v7.widget.Toolbar;
@@ -36,7 +33,7 @@ import butterknife.OnClick;
  * Created by Trasys on 2017/5/22.
  */
 
-public class LiveListActivity extends AppCompatActivity {
+public class LiveListActivity extends BaseActivity {
     private static final String TAG = "LiveListActivity";
 
     @InjectView(R.id.tb_liveList)
@@ -55,23 +52,11 @@ public class LiveListActivity extends AppCompatActivity {
     private ArrayList<String> mLiveTopList = new ArrayList<>();
     private FlowLayout mFl;
     private Random random = new Random();
+    private PopupWindow mPopupWindow;
+
 
     @Override
-    protected void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_livelist);
-        ButterKnife.inject(this);
-
-        initData();
-        initTopicView();
-        initListener();
-    }
-
-    private void initTopicView() {
-        mHlv.setAdapter(new HlvAdapter(this, mLiveTopList));
-    }
-
-    private void initListener() {
+    protected void initListener() {
         mGv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -90,12 +75,19 @@ public class LiveListActivity extends AppCompatActivity {
         });
     }
 
-    private void initData() {
+    @Override
+    protected void initData() {
         mBean = (LiveBean) getIntent().getSerializableExtra("liveBean");
         mTitle = (String) getIntent().getSerializableExtra("tb_title");
         mLiveTopList = (ArrayList<String>) getIntent().getSerializableExtra("topList");
         mTbLiveList.setTitle(mTitle);
         mGv.setAdapter(new LiveListGVAdapter(this, mBean));
+        mHlv.setAdapter(new HlvAdapter(this, mLiveTopList));
+    }
+
+    @Override
+    protected int getResId() {
+        return R.layout.activity_livelist;
     }
 
     @OnClick({R.id.iv_livelist_search, R.id.iv_livelist_expand})
@@ -112,34 +104,37 @@ public class LiveListActivity extends AppCompatActivity {
         }
     }
 
-    @InjectView(R.id.rv_pop)
+    //    @InjectView(R.id.rv_pop)
     RecyclerView mRvPop;
-    @InjectView(R.id.tv_pop_all)
+    //    @InjectView(R.id.tv_pop_all)
     TextView mTvAll;
-    @InjectView(R.id.tv_pop_new)
+    //    @InjectView(R.id.tv_pop_new)
     TextView mTvNew;
-    @InjectView(R.id.tv_pop_hot)
+    //    @InjectView(R.id.tv_pop_hot)
     TextView mTvHot;
 
     private void initPopView() {
         View popview = View.inflate(this, R.layout.view_pop, null);
-        ButterKnife.inject(this,popview);
-//        mRvPop = (RecyclerView) popview.findViewById(R.id.rv_pop);
-//        mTvAll = (TextView) popview.findViewById(R.id.tv_pop_all);
-//        mTvNew = (TextView) popview.findViewById(R.id.tv_pop_new);
-//        mTvHot = (TextView) popview.findViewById(R.id.tv_pop_hot);
+//        ButterKnife.inject(popview);
+        ButterKnife.inject(this);
+        mRvPop = (RecyclerView) popview.findViewById(R.id.rv_pop);
+        mTvAll = (TextView) popview.findViewById(R.id.tv_pop_all);
+        mTvNew = (TextView) popview.findViewById(R.id.tv_pop_new);
+        mTvHot = (TextView) popview.findViewById(R.id.tv_pop_hot);
 
         //初始化popwindow点击事件
         initPopEvent();
         initRv();
 
-        PopupWindow popupWindow = new PopupWindow(popview);
-        popupWindow.setContentView(popview);
-        popupWindow.setBackgroundDrawable(new BitmapDrawable());
-        popupWindow.setOutsideTouchable(true);
-        popupWindow.setWidth(ViewGroup.LayoutParams.MATCH_PARENT);
-        popupWindow.setHeight(ViewGroup.LayoutParams.WRAP_CONTENT);
-        popupWindow.showAsDropDown(mTbLiveList);
+        if (mPopupWindow == null) {
+            mPopupWindow = new PopupWindow(popview);
+            mPopupWindow.setContentView(popview);
+            mPopupWindow.setBackgroundDrawable(new BitmapDrawable());
+            mPopupWindow.setOutsideTouchable(true);
+            mPopupWindow.setWidth(ViewGroup.LayoutParams.MATCH_PARENT);
+            mPopupWindow.setHeight(ViewGroup.LayoutParams.WRAP_CONTENT);
+            mPopupWindow.showAsDropDown(mTbLiveList);
+        }
     }
 
     //流式布局

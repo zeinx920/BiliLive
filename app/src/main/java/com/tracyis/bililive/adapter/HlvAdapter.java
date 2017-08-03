@@ -23,9 +23,14 @@ public class HlvAdapter extends BaseAdapter {
         mList = liveTopList;
     }
 
+
+
     @Override
     public int getCount() {
-        return mList.size();
+        if (mList != null) {
+            return mList.size();
+        }
+        return 0;
     }
 
     @Override
