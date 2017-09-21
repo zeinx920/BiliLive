@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <TextView
+        android:id="@+id/tv_text"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:text="啊实打实大师的啊实打实大师的啊实打实大师的啊实打实大师的啊实打实大师的啊实打实大师的啊实打实大师的啊实打实大师的啊实打实大师的啊实打实大师的啊实打实大师的啊实打实大师的啊实打实大师的啊实打实大师的啊实打实大师的啊实打实大师的啊实打实大师的啊实打实大师的啊实打实大师的啊实打实大师的啊实打实大师的啊实打实大师的啊实打实大师的啊实打实大师的"/>
+
+    <View
+        android:id="@+id/view"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginTop="50dp"
+        android:background="@drawable/bg_color"/>
+
+    <TextView
+        android:id="@+id/textView"
+        android:textColor="@android:color/holo_blue_dark"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="展开查看更多"
+        android:textAlignment="center"
+        android:layout_marginTop="120dp"/>
+</RelativeLayout>

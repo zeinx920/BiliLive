@@ -23,8 +23,6 @@ public class HlvAdapter extends BaseAdapter {
         mList = liveTopList;
     }
 
-
-
     @Override
     public int getCount() {
         if (mList != null) {

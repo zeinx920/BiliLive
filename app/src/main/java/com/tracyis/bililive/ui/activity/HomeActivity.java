@@ -23,7 +23,9 @@ import butterknife.InjectView;
 import retrofit2.Call;
 
 public class HomeActivity extends BaseActivity {
+
     private static final String TAG = "HomeActivity";
+
     @InjectView(R.id.tb_home)
     Toolbar mTbHome;
     @InjectView(R.id.gv_Home)
@@ -50,7 +52,8 @@ public class HomeActivity extends BaseActivity {
                 .getInstance()
                 .getApi()
                 .getTopCategory();
-        categoryBeanCall.enqueue(new MyRetroCallback<LiveCategoryBean>() {
+
+        categoryBeanCall.enqueue(new MyRetroCallback<LiveCategoryBean>(){
             @Override
             protected void onSuccess(LiveCategoryBean data) {
                 mLiveTopList.put(0, data.data._$1);
@@ -66,7 +69,6 @@ public class HomeActivity extends BaseActivity {
                 mLiveTopList.put(10, data.data._$11);
                 mLiveTopList.put(11, data.data._$12);
             }
-
         });
     }
 
@@ -83,7 +85,6 @@ public class HomeActivity extends BaseActivity {
                 requestDetail(position);
             }
         });
-
     }
 
     private void requestDetail(final int position) {
@@ -102,7 +103,5 @@ public class HomeActivity extends BaseActivity {
                 startActivity(intent);
             }
         });
-
     }
-
 }

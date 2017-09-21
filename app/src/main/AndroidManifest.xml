@@ -32,6 +32,9 @@
         <activity
             android:name=".ui.activity.VideoViewActivity"
             android:theme="@style/StyledIndicators"/>
+        <activity android:name=".ui.activity.TestActivity">
+
+        </activity>
     </application>
 
 </manifest>

@@ -7,6 +7,7 @@ import com.tracyis.bililive.network.MyRetrofit;
 /**
  * Created by Trasys on 2017/4/6.
  */
+
 public class MyApp extends Application {
     private static final String TAG = "MyApp";
 

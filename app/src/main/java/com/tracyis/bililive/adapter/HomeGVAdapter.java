@@ -12,6 +12,7 @@ import com.tracyis.bililive.R;
 /**
  * Created by Trasys on 2017/5/20.
  */
+
 public class HomeGVAdapter extends BaseAdapter {
     private static final String TAG = "GvHomeAdaer";
     private final Context mContext;

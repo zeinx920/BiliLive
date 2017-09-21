@@ -8,6 +8,7 @@ import butterknife.ButterKnife;
 /**
  * Created by Trasys on 2017/6/6.
  */
+
 public abstract class BaseHolder<T> {
     private static final String TAG = "BaseHolder";
     private Context mContext;

@@ -53,6 +53,8 @@ public class RankingListAdapter extends BaseAdapter {
         } else {
             holder = (Holder) convertView.getTag();
         }
+
+
         holder.name.setText(datas.get(position).username + "");
         holder.devote.setText(datas.get(position).uid + "");
         holder.rank.setText(datas.get(position).rank + "");
