@@ -105,7 +105,9 @@ public class InteractFragment extends BaseFragment {
                 // mRoomMes = data.data.room; 千万不要使用
                 mRoomMes.addAll(data.data.room);
                 Log.d(TAG, "onSuccess: 请求网络数据" + mRoomMes.size());
-                mRvInteract.smoothScrollToPosition(mRoomMes.size());
+                if (mRoomMes != null&&mRvInteract!=null) {
+                    mRvInteract.smoothScrollToPosition(mRoomMes.size());
+                }
                 mRvAdapter.notifyDataSetChanged();
             }
         });
@@ -146,7 +148,9 @@ public class InteractFragment extends BaseFragment {
                     mRoomMes.add(mRoomMes.size(), bean);
                     mRvAdapter.notifyItemInserted(mRoomMes.size());
                     mTvDanmu.setText("");
-                    mRvInteract.smoothScrollToPosition(mRoomMes.size());
+                    if (mRoomMes != null&&mRvInteract!=null) {
+                        mRvInteract.smoothScrollToPosition(mRoomMes.size());
+                    }
                     Toast.makeText(mContext, "用户发弹幕", Toast.LENGTH_SHORT).show();
                     HideSoftKeyboard();
                 }

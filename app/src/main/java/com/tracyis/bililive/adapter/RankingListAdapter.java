@@ -23,6 +23,7 @@ public class RankingListAdapter extends BaseAdapter {
     public RankingListAdapter(Context context, List<RankingBean.DataBean> data) {
         mContext = context;
         datas = data;
+        notifyDataSetChanged();
     }
 
     @Override

@@ -59,6 +59,7 @@ public class RankingFragment extends BaseFragment {
                 rankingBeanCall.enqueue(new MyRetroCallback<RankingBean>() {
                     @Override
                     protected void onSuccess(RankingBean data) {
+                        mDatas.clear();
                         mDatas.addAll(data.data);
                         mRankingAdapter.notifyDataSetChanged();
                         Log.d(TAG, "onSuccess: " + mDatas.get(0));
